@@ -47,7 +47,7 @@ class ProductController extends Controller
 
         $cart = session()->get('cart');
         $id = $request->product_id;
-
+        
         //$cart = '';
         //session()->put('cart', $cart);
 
@@ -74,9 +74,17 @@ class ProductController extends Controller
 
         //Check to see if the product is already in the cart
         if(isset($cart[$id])) {
-            //It is so just add the new uantity to the old
-            $cart[$id]['quantity'] = $cart[$id]['quantity'] + $request->quantity;
-            
+
+            if($request->state == 'add') {
+                //It is so just add the new uantity to the old
+                $cart[$id]['quantity'] = $cart[$id]['quantity'] + $request->quantity;
+            } else if($request->state == 'update' && $request->quantity == 0) {
+                //dd('delete');
+                unset($cart[$request->product_id]);
+            } else if($request->state == 'update') {
+                $cart[$id]['quantity'] = $request->quantity;
+            }
+
             //Push the cart back to the session
             session()->put('cart', $cart);
 
@@ -103,6 +111,15 @@ class ProductController extends Controller
         return redirect('/markets/view/' . $request->event_id)->with('success', 'Product added to cart');
 
         //Order::create($request->all());
+    }
+
+    public function submitOrder(Request $request)
+    {
+        //Get the isers cart
+        $cart = session()->get('cart');
+
+        dd($cart);
+
     }
 
     public function cart()
