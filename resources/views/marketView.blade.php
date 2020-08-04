@@ -31,6 +31,7 @@
                                     <input type="hidden" name="price" value="{{ $option->price }}" />
                                     <input type="hidden" name="image" value="{{ $option->image }}" />
                                     <input type="hidden" name="name" value="{{ $option->name }}" />
+                                    <input type="hidden" name="state" value="add" />
                                     <button type="submit" class="btn btn-lg btn-primary">Add to Cart</button>
                                 
                                 </div>
