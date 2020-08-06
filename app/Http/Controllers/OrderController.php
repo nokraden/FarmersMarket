@@ -34,7 +34,11 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //Get the users cart
+        $cart = session()->get('cart');
+
+        //Show cart for debugging
+        dd($cart);
     }
 
     /**

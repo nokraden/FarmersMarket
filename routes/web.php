@@ -20,6 +20,10 @@ Route::get('/markets/', 'MarketController@index'); //View all markets
 
 //Product routes
 Route::get('/markets/view/{id}', 'ProductController@index'); //View products at a market
+
+//Cart Routes **Need to create controller and move code**
 Route::get('/AddToCart', 'ProductController@AddToCart')->name('product.AddToCart'); //Add to the cart
-Route::get('/cart',      'ProductController@cart'     )->name('product.cart');
-Route::get('/submitOrder',      'ProductController@submitOrder'     )->name('product.submitOrder');
+Route::get('/cart', 'ProductController@cart')->name('product.cart');
+
+//Order routes
+Route::get('/submitOrder', 'OrderController@store')->name('order.submitOrder');
