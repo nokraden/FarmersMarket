@@ -1,4 +1,4 @@
-# Instrudctions to setup Farmers Market App test environment
+# Instructions to setup Farmers Market App test environment
 
 ## Install Laragon	 https://laragon.org/download/
 
