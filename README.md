@@ -1,5 +1,6 @@
-Instructions to setup Farmers Market App test environment
-Install Laragon	 https://laragon.org/download/
+### Instrudctions to setup Farmers Market App test environment
+
+## Install Laragon	 https://laragon.org/download/
 
 Install Visual Code Studio (Or favorite code editor)
 https://code.visualstudio.com/Download
