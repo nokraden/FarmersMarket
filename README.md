@@ -1,4 +1,4 @@
-### Instrudctions to setup Farmers Market App test environment
+# Instrudctions to setup Farmers Market App test environment
 
 ## Install Laragon	 https://laragon.org/download/
 
@@ -10,6 +10,7 @@ Start Laragon
 Click Menu->Laragon->Terminal
 
 In Terminal
+    git config user.email user@email.com
     git clone https://github.com/nokraden/FarmersMarket/ FarmersMarket
     cd FarmersMarket
     composer install
