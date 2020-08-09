@@ -3,9 +3,6 @@
 ## Install Laragon	 
 https://laragon.org/download/
 
-## Install Visual Code Studio (Or favorite code editor)
-https://code.visualstudio.com/Download
-
 # Start Laragon
     Click Menu->Laragon->Terminal
 
@@ -29,7 +26,12 @@ https://code.visualstudio.com/Download
     php artisan migrate
     php artisan db:seed
 
-# Setup Visual Code Studios to use git
+# Open the app
+In Laragon click the reload next to Apache and open a browser to http://FarmersMarket.test
+
+
+# Install and setup Visual Code Studios to use git (Only needed to view the code)
+    Install Visual Code Studio https://code.visualstudio.com/Download
     Open Visual Code Studios
     File -> Preferences -> Settings
     Open Extensions -> Git
@@ -39,10 +41,6 @@ https://code.visualstudio.com/Download
     Click the source control icon on the right 
     Click open folder and browse to C:\laragon\www\FarmersMarket and press select folder
     
-# Open the app
-In Laragon click the reload next to Apache
-
-Launch browser and goto http://FarmersMarket.test
 
 
 
