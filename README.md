@@ -1,13 +1,42 @@
-Instructions to setup Fsrmers Market App test environemnts
+Instructions to setup Farmers Market App test environment
 Install Laragon	 https://laragon.org/download/
 
 Install Visual Code Studio (Or favorite code editor)
 https://code.visualstudio.com/Download
 
+Start Laragon
 
+Click Menu->Laragon->Terminal
 
+In Terminal
+    git clone https://github.com/nokraden/FarmersMarket/ FarmersMarket
+    cd FarmersMarket
+    composer install
+    npm install
+    cp .env.example .env (Open up this file and change database name to market_app
 
+Create the database
+    In Laragon click Database and the press Open
+    Right click Laragon on the left side and select Create New -> Database
+    Use the name farmers_market
+    Edit c:\laragon\www\Farmers_Market\.env and change the DB_Database line to DB_DATABASE=farmers_market
+    Save and close file
 
+Populate database (In Terminal)
+    php artisan key:generate
+    php artisan migrate
+    php artisan db:seed
+
+Setup Visual Code Studios to use git
+    Open Visual Code Studios
+    File -> Preferences -> Settings
+    Open Extensions -> Git
+    Scroll down to path and click "Edit in settings.json
+    Change the path in the file to "git.path": "C:\\laragon\\bin\\git\\bin\\git.exe"
+    Close and reopen Visual Code Studio
+    Click the source control icon on the right 
+    Click open folder and vrowse to C:\laragon\www\FarmersMarket and press select folder
+    
 
 
 <p align="center"><img src="https://res.cloudinary.com/dtfbvvkyp/image/upload/v1566331377/laravel-logolockup-cmyk-red.svg" width="400"></p>
