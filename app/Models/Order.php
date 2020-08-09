@@ -12,6 +12,7 @@ class Order extends Model
 	
 	//protected $primaryKey = 'Product_SID';
 	
+	//Database structure
 	protected $fillable = [
 		'user_id',
 		'product_id',
@@ -21,6 +22,7 @@ class Order extends Model
 		'invoiced'
 	];
 	
+	//Defined database cardinality and links one order to many products
 	public function product() {
 		return $this->belongsTo('App\Models\Product');
 	}

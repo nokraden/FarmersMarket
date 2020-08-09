@@ -34,6 +34,9 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
+        //TODO add code to create order
+        //TODO remove either the code of the one in the OrderController
+
         //Get the users cart
         $cart = session()->get('cart');
 

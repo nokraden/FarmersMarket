@@ -14,8 +14,10 @@ class MarketController extends Controller
      */
     public function index()
     {
+        //Read all events in the database
         $markets = Market::all();
 
+        //Return view with list of alll events
         return view('markets')->with('markets', $markets);
     }
 

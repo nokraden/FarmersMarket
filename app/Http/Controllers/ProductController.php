@@ -15,6 +15,7 @@ class ProductController extends Controller
      */
     public function index($market_id)
     {
+        //This page lists all products at a given market
         //Get the products at the selected market
         $marketInfo = Market::with('products')->get()->find($market_id);
         //Return the list to the marketView blade
@@ -41,19 +42,20 @@ class ProductController extends Controller
     public function addToCart(Request $request)
     {
 
-        //Setup default variable. Possibly auto filled later
+        //Setup default variable for items not implemented yet. Possibly auto filled later
         $request->request->add(['user_id' => 1]);
         $request->request->add(['invoiced' => 'N']);
 
+        //Create cart variable to store data from user session in
         $cart = session()->get('cart');
         $id = $request->product_id;
         
         //$cart = '';
         //session()->put('cart', $cart);
 
-        //Check if this is the first item
+        //Check if the cart is empty
         if(!$cart) {
-            //Add item to cart
+            //Add first item to cart
             $cart = [
                 $id => [
                     "user_id" => $request->user_id,
@@ -67,8 +69,10 @@ class ProductController extends Controller
                 ]
             ];
 
+            //Add the $cart variable to the users session
             session()->put('cart', $cart);
 
+            //Return to the event page for the items that was added
             return redirect('/markets/view/' . $request->event_id)->with('success', 'Product added to cart');
         }
 
@@ -76,12 +80,14 @@ class ProductController extends Controller
         if(isset($cart[$id])) {
 
             if($request->state == 'add') {
-                //It is so just add the new uantity to the old
+                //It is so just update the quantity
+                //##TODO This piece of code may not be valid after prior update
                 $cart[$id]['quantity'] = $cart[$id]['quantity'] + $request->quantity;
             } else if($request->state == 'update' && $request->quantity == 0) {
-                //dd('delete');
+                //0 quantity was selected so remove the item from the cart
                 unset($cart[$request->product_id]);
             } else if($request->state == 'update') {
+                //Item exisits 
                 $cart[$id]['quantity'] = $request->quantity;
             }
 
@@ -92,7 +98,7 @@ class ProductController extends Controller
             return redirect('/markets/view/' . $request->event_id)->with('success', 'Product added to cart');
         }
 
-        //Only other condition is the it is not in the non empty cart so add it
+        //Only other condition is the it is not in the cart and the cart is not empty so add it
         $cart[$id] = [
             "user_id" => $request->user_id,
             "product_id" => $request->product_id,
@@ -115,9 +121,12 @@ class ProductController extends Controller
 
     public function submitOrder(Request $request)
     {
-        //Get the isers cart
+        //Get the users cart
         $cart = session()->get('cart');
 
+        //Temporary code so diplay current cart
+        //TODO add code to create order
+        //TODO remove either the code of the one in the OrderController
         dd($cart);
 
     }

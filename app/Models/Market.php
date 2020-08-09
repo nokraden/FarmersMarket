@@ -12,6 +12,7 @@ class Market extends Model
 	
 	//protected $primaryKey = 'Product_SID';
 
+	//Database structure
 	protected $fillable = [
 		'user_id',
 		'name',
@@ -29,6 +30,7 @@ class Market extends Model
 		'approved'
 	];
 	
+	//Defined database cardinality an dlinks one market to many products
 	public function products() {
 			return $this->hasMany('App\Models\Product');
 	}
